@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-ago-2012 10.58.24 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="deliverables_hub" name="com.gmail.shinsensei.deliverablesHub.entities.deprecated.Teams" table="teams">
+    <id name="teamId" type="java.lang.Integer">
+      <column name="teamID"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.gmail.shinsensei.deliverablesHub.entities.Courses" fetch="select" name="courses">
+      <column name="courseID" not-null="true"/>
+    </many-to-one>
+    <property name="password" type="string">
+      <column length="45" name="password"/>
+    </property>
+    <set inverse="true" name="teamDeliverableses">
+      <key>
+        <column name="teamID" not-null="true" unique="true"/>
+      </key>
+      <one-to-many class="com.gmail.shinsensei.deliverablesHub.entities.deprecated.TeamDeliverables"/>
+    </set>
+    <set inverse="false" name="personses" table="teams_students">
+      <key>
+        <column name="teamID" not-null="true"/>
+      </key>
+      <many-to-many entity-name="com.gmail.shinsensei.deliverablesHub.entities.Persons">
+        <column name="studentID" not-null="true"/>
+      </many-to-many>
+    </set>
+  </class>
+</hibernate-mapping>

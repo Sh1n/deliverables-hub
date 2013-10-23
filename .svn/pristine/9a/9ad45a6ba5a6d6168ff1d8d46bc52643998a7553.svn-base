@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="deliverables_hub"/>
+  <table-filter match-name="teams"/>
+  <table-filter match-name="persons"/>
+  <table-filter match-name="system_users"/>
+  <table-filter match-name="projects"/>
+  <table-filter match-name="courses_professors"/>
+  <table-filter match-name="courses"/>
+  <table-filter match-name="deliverables"/>
+  <table-filter match-name="team_deliverables"/>
+  <table-filter match-name="teams_students"/>
+  <table-filter match-name="profile_pictures"/>
+</hibernate-reverse-engineering>

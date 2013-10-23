@@ -1,0 +1,18 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: Francesco Bux -->
+ 
+<struts>
+    <package name="main" namespace="/main" extends="errors">
+        <action name="dashboard">
+            <result>/dashboard.jsp</result>
+            <interceptor-ref name="securityStack" />
+            <interceptor-ref name="authorization">
+                <param name="allowedRoles">admin,professor,student</param>
+            </interceptor-ref>
+            <interceptor-ref name="guiStack" />
+        </action>
+    </package>
+</struts>

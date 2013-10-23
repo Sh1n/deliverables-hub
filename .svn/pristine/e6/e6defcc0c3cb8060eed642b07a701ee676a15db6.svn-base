@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-ago-2012 10.58.24 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="deliverables_hub" name="com.gmail.shinsensei.deliverablesHub.entities.ProfilePictures" table="profile_pictures">
+    <id name="personId" type="java.lang.Integer">
+      <column name="personID"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.gmail.shinsensei.deliverablesHub.entities.deprecated.Persons" fetch="select" insert="false" name="persons" update="false">
+      <column name="personID" not-null="true" unique="true"/>
+    </many-to-one>
+    <property name="picture" type="binary">
+      <column name="picture" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

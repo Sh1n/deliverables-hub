@@ -1,0 +1,41 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: Francesco Bux -->
+ 
+<struts>
+    <package name="teams" namespace="/teams" extends="students">
+        
+        <!-- Create Team -->
+        <action name="create_team" class="com.gmail.shinsensei.deliverablesHub.actions.Teams" method="create_team">
+            <interceptor-ref name="securityStack" />
+            <interceptor-ref name="authorization"><param name="allowedRoles">admin,student</param></interceptor-ref>
+        </action>
+        
+        <!-- Join Team -->
+        <action name="join_team" class="com.gmail.shinsensei.deliverablesHub.actions.Teams" method="join_team">
+            <interceptor-ref name="securityStack" />
+            <interceptor-ref name="authorization"><param name="allowedRoles">admin,student</param></interceptor-ref>
+        </action>
+        
+        <!-- Details -->
+        <action name="details" class="com.gmail.shinsensei.deliverablesHub.actions.Teams" method="details">
+            <interceptor-ref name="securityStack" />
+            <interceptor-ref name="authorization"><param name="allowedRoles">admin,professor</param></interceptor-ref>
+        </action>
+        
+        <!-- Download Submitted Files -->
+        <action name="submitted_files" class="com.gmail.shinsensei.deliverablesHub.actions.Teams" method="submitted_files">
+            <interceptor-ref name="securityStack" />
+            <interceptor-ref name="authorization"><param name="allowedRoles">admin,professor</param></interceptor-ref>
+            <interceptor-ref name="guiStack" />
+        </action>
+        
+        <!-- Grant View Permission -->
+        <action name="grant_view_permission" class="com.gmail.shinsensei.deliverablesHub.actions.Teams" method="grant_view_permission">
+            <interceptor-ref name="securityStack" />
+            <interceptor-ref name="authorization"><param name="allowedRoles">professor</param></interceptor-ref>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-ago-2012 10.58.24 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="deliverables_hub" name="com.gmail.shinsensei.deliverablesHub.entities.deprecated.Persons" table="persons">
+    <id name="userID" type="java.lang.Integer">
+      <column name="userID"/>
+    </id>
+    <many-to-one class="com.gmail.shinsensei.deliverablesHub.entities.deprecated.SystemUsers" fetch="select" insert="false" name="systemUsers" update="false">
+      <column name="userID" not-null="true" unique="true"/>
+    </many-to-one>
+    <property name="firstName" type="string">
+      <column length="45" name="firstName" not-null="true"/>
+    </property>
+    <property name="lastName" type="string">
+      <column length="45" name="lastName" not-null="true"/>
+    </property>
+    <property name="immatriculationNumber" type="java.lang.Integer">
+      <column name="immatriculationNumber" unique="true"/>
+    </property>
+    <set inverse="true" name="courseses" table="courses_professors">
+      <key>
+        <column name="professorID" not-null="true"/>
+      </key>
+      <many-to-many entity-name="com.gmail.shinsensei.deliverablesHub.entities.Courses">
+        <column name="courseID" not-null="true"/>
+      </many-to-many>
+    </set>
+    <set inverse="true" name="teamses" table="teams_students">
+      <key>
+        <column name="studentID" not-null="true"/>
+      </key>
+      <many-to-many entity-name="com.gmail.shinsensei.deliverablesHub.entities.Teams">
+        <column name="teamID" not-null="true"/>
+      </many-to-many>
+    </set>
+    <set inverse="true" name="profilePictureses">
+      <key>
+        <column name="personID" not-null="true" unique="true"/>
+      </key>
+      <one-to-many class="com.gmail.shinsensei.deliverablesHub.entities.ProfilePictures"/>
+    </set>
+  </class>
+</hibernate-mapping>
